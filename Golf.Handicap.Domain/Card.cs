@@ -10,7 +10,7 @@ namespace Golf.Handicap.Domain {
         public Card(DateTime datePlayed, IEnumerable<Score> scores) {
             if (datePlayed > DateTime.Now)
                 throw new ArgumentOutOfRangeException("Date Played must be in the past");
-            if (scores.Count() != 9 || scores.Count() != 18)
+            if (scores.Count() != 9 && scores.Count() != 18)
                 throw new ArgumentOutOfRangeException("Scores submitted must be for 9 or 18 holes only");
 
             DatePlayed = datePlayed;

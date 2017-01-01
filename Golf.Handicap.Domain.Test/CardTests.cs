@@ -35,6 +35,23 @@ namespace Golf.Handicap.Domain.Test {
             var card = new Card(DateTime.Now.AddDays(-10), scores);
         }
 
+        [TestMethod]
+        public void Card_Constructor_9Scores_IsAccepted() {
+            var scores = new List<Score>();
+            scores.InsertRange(0, _9scores);
+            var card = new Card(DateTime.Now.AddDays(-10), scores);
+            Assert.IsNotNull(card);
+        }
+
+        [TestMethod]
+        public void Card_Constructor_18Scores_IsAccepted() {
+            var scores = new List<Score>();
+            scores.InsertRange(0, _9scores);
+            scores.InsertRange(0, _9scores);
+
+            var card = new Card(DateTime.Now.AddDays(-10), scores);
+            Assert.IsNotNull(card);
+        }
 
 
     }

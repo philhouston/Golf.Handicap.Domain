@@ -1,9 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Golf.Handicap.Domain.Test {
     [TestClass]
+    [ExcludeFromCodeCoverageAttribute]
+
     public class CardTests {
 
         private List<Score> _9scores = new List<Score>() {
@@ -52,6 +55,45 @@ namespace Golf.Handicap.Domain.Test {
             var card = new Card(DateTime.Now.AddDays(-10), scores);
             Assert.IsNotNull(card);
         }
+
+        [TestMethod]
+        public void Card_9Scores_TotalScoreIs40() {
+            var scores = new List<Score>();
+            scores.InsertRange(0, _9scores);
+
+            var card = new Card(DateTime.Now.AddDays(-10), scores);
+            Assert.AreEqual(40, card.TotalScore());
+        }
+
+        [TestMethod]
+        public void Card_9Scores_ParTotalIs32() {
+            var scores = new List<Score>();
+            scores.InsertRange(0, _9scores);
+
+            var card = new Card(DateTime.Now.AddDays(-10), scores);
+            Assert.AreEqual(32, card.ParTotal());
+        }
+
+        [TestMethod]
+        public void Card_9Scores_DifferenceIs8() {
+            var scores = new List<Score>();
+            scores.InsertRange(0, _9scores);
+
+            var card = new Card(DateTime.Now.AddDays(-10), scores);
+            Assert.AreEqual(8, card.Difference());
+        }
+
+        [TestMethod]
+        public void Card_DatePlayed_ReturnsOriginalValue() {
+            var scores = new List<Score>();
+            scores.InsertRange(0, _9scores);
+
+            var date = DateTime.Now.AddDays(-10);
+            
+            var card = new Card(date, scores);
+            Assert.AreEqual(date, card.DatePlayed);
+        }
+
 
 
     }

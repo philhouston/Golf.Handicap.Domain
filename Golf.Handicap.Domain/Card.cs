@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Golf.Handicap.Domain {
     public class Card {
 
+
         public Card(DateTime datePlayed, IEnumerable<Score> scores) {
             if (datePlayed > DateTime.Now)
                 throw new ArgumentOutOfRangeException("Date Played must be in the past");

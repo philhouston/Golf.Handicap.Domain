@@ -25,16 +25,20 @@ namespace Golf.Handicap.Domain {
         }
 
         private int CalculatePayingHandicap(decimal currentHandicap) {
-            return (int)Math.Round(currentHandicap, 0);
+            return (int)Math.Round(currentHandicap, 0, MidpointRounding.AwayFromZero);
         }
 
         private decimal CalculateExactHandicap(decimal initialHandicap, IEnumerable<Card> cards) {
+
+            if (cards.Count() == 0)
+                return initialHandicap;
+
             // Lets use a simple method for the time being
             var totalDifference = Cards.Sum(x => x.Difference());
             var cardCount = Cards.Count();
-            var average = totalDifference / cardCount;
+            decimal average = totalDifference / cardCount;
 
-            var newHandicap = (InitialHandicap + average) / 2;
+            decimal newHandicap = (InitialHandicap + average) / 2;
 
             return Math.Round(newHandicap, 1);
         }

@@ -1,8 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Golf.Handicap.Domain.Test {
     [TestClass]
+    [ExcludeFromCodeCoverageAttribute]
     public class ScoreTests {
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -55,6 +57,11 @@ namespace Golf.Handicap.Domain.Test {
             Assert.IsTrue(score.AdjustedShots == 3);
         }
 
+        [TestMethod]
+        public void Score_ShotsPlayed_ParSamesAsAdjustedShorts() {
+            var score = new Score(5, 5);
+            Assert.IsTrue(score.ShotsPlayed == score.AdjustedShots);
+        }
 
 
     }

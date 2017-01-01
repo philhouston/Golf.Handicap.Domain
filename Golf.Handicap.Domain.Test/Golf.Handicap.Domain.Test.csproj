@@ -65,11 +65,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CardTests.cs" />
     <Compile Include="GolferTests.cs" />
+    <Compile Include="RootTests.cs" />
+    <Compile Include="TestDataCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Golf.Domain\Golf.Domain.csproj">
+      <Project>{49f7f69a-ad2d-4404-b0ca-8de4ad863583}</Project>
+      <Name>Golf.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Golf.Handicap.Domain\Golf.Handicap.Domain.csproj">
       <Project>{7646ae28-42a5-455c-a087-f31495202b72}</Project>
       <Name>Golf.Handicap.Domain</Name>

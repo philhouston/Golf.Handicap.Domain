@@ -9,24 +9,7 @@ namespace Golf.Handicap.Domain.Test {
     public class GolferTests {
 
 
-        private List<Score> GetScores() {
-            return new List<Score>() {
-                new Score(3, 5),
-                new Score(4, 4),
-                new Score(3, 5),
-                new Score(4, 4),
-                new Score(3, 5),
-                new Score(4, 4),
-                new Score(3, 5),
-                new Score(4, 4),
-                new Score(4, 4)
-            };
-        }
-
-        private Card GetCard() {
-            return new Card(DateTime.Now.AddDays(-10), GetScores());
-        }
-        
+       
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Golfer_Constructor_SexMale_InitialHandicapOf29_CausesException() {
@@ -55,34 +38,18 @@ namespace Golf.Handicap.Domain.Test {
         public void Golfer_InitialHandicap10_withCardDifferenceOf8_CalculatesNewHandicapCorrectly() {
 
             var initialHandicap = 10m;
-            var card = GetCard();
+            var card = TestDataCreator.Card();
             var diff = card.Difference();
             var newHandicap = (initialHandicap + diff) / 2;
 
-            var cards = new List<Card>() { GetCard() };
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards );
-
-            Assert.AreEqual(newHandicap, golfer.CurrentHandicap);
-
-        }
-
-        [TestMethod]
-        public void Golfer_InitialHandicap10_withCardDifferenceOf8_ADDAnotherCard_CalculatesNewHandicapCorrectly() {
-
-            var initialHandicap = 10.3m;
-            var card = GetCard();
-            var diff = card.Difference();
-
-            var cards = new List<Card>() { GetCard() };
+            var cards = new List<Card>() { card};
             var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
 
-            golfer.AddCard(card);
-            
-            var newHandicap = Math.Round(((initialHandicap + diff) / 2),1);
-
+            golfer.CalculateNewHandicap(new SimpleHandicapCalculationService());
             Assert.AreEqual(newHandicap, golfer.CurrentHandicap);
 
         }
+
 
         [TestMethod]
         public void Golfer_InitialHandicap10Point3_HasPlayingHandicapOf10() {

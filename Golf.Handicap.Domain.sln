@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golf.Handicap.Domain", "Golf.Handicap.Domain\Golf.Handicap.Domain.csproj", "{7646AE28-42A5-455C-A087-F31495202B72}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golf.Handicap.Domain.Test", "Golf.Handicap.Domain.Test\Golf.Handicap.Domain.Test.csproj", "{60C307AA-DC93-42CF-88A8-1C635AEC2D2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Golf.Domain", "Golf.Domain\Golf.Domain.csproj", "{49F7F69A-AD2D-4404-B0CA-8DE4AD863583}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{60C307AA-DC93-42CF-88A8-1C635AEC2D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60C307AA-DC93-42CF-88A8-1C635AEC2D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60C307AA-DC93-42CF-88A8-1C635AEC2D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49F7F69A-AD2D-4404-B0CA-8DE4AD863583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49F7F69A-AD2D-4404-B0CA-8DE4AD863583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49F7F69A-AD2D-4404-B0CA-8DE4AD863583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49F7F69A-AD2D-4404-B0CA-8DE4AD863583}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

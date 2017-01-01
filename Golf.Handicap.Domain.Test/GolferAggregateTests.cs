@@ -6,31 +6,31 @@ using System.Diagnostics.CodeAnalysis;
 namespace Golf.Handicap.Domain.Test {
     [TestClass]
     [ExcludeFromCodeCoverageAttribute]
-    public class GolferTests {
+    public class GolferAggregateTests {
 
 
        
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Golfer_Constructor_SexMale_InitialHandicapOf29_CausesException() {
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Male, 29, new List<Card>());
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Male, 29);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Golfer_Constructor_SexUknown_InitialHandicapOf29_CausesException() {
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Unknown, 29, new List<Card>());
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Unknown, 29);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Golfer_Constructor_SexFemale_InitialHandicapOf37_CausesException() {
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, 37, new List<Card>());
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Female, 37);
         }
 
         [TestMethod]
         public void Golfer_Constructor_SexFemale_InitialHandicapOf29_DoesNotCausesException() {
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, 29, new List<Card>() );
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Female, 29 );
             Assert.IsNotNull(golfer);
         }
 
@@ -43,7 +43,7 @@ namespace Golf.Handicap.Domain.Test {
             var newHandicap = (initialHandicap + diff) / 2;
 
             var cards = new List<Card>() { card};
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
 
             golfer.CalculateNewHandicap(new SimpleHandicapCalculationService());
             Assert.AreEqual(newHandicap, golfer.CurrentHandicap);
@@ -58,7 +58,7 @@ namespace Golf.Handicap.Domain.Test {
             var playingHandicap = 10;
 
             var cards = new List<Card>();
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
 
             Assert.AreEqual(playingHandicap, golfer.PlayingHandicap);
 
@@ -71,7 +71,7 @@ namespace Golf.Handicap.Domain.Test {
             var playingHandicap = 11;
 
             var cards = new List<Card>();
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
 
             Assert.AreEqual(playingHandicap, golfer.PlayingHandicap);
 
@@ -84,7 +84,7 @@ namespace Golf.Handicap.Domain.Test {
             var playingHandicap = 11;
 
             var cards = new List<Card>();
-            var golfer = new Golfer(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
+            var golfer = new GolferAggregate(Guid.NewGuid(), SexEnum.Female, initialHandicap, cards);
 
             Assert.AreEqual(playingHandicap, golfer.PlayingHandicap);
 

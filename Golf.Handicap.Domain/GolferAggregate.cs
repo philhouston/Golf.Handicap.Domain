@@ -6,16 +6,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Golf.Handicap.Domain {
-    public class Golfer : Entity<Guid> {
+    public class GolferAggregate : Entity<Guid> {
 
-        private List<Card> _cards = new List<Card>();
+        private List<Card> _cards;
 
-        public Golfer(Guid id, SexEnum sex, decimal currentHandicap) : base(id) {
+        public GolferAggregate(Guid id, SexEnum sex, decimal currentHandicap) : base(id) {
             Sex = sex;
             SetCurrentHandicap(currentHandicap);
+            ClearoutCards();
         }
 
-        public Golfer(Guid id, SexEnum sex, decimal currentHandicap, List<Card> cards) : this(id,sex,currentHandicap) {
+        public GolferAggregate(Guid id, SexEnum sex, decimal currentHandicap, List<Card> cards) : this(id,sex,currentHandicap) {
             if (cards == null)
                 throw new ArgumentNullException("Cards cannot be null");
 
